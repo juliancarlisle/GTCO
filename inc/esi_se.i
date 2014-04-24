@@ -1,0 +1,126 @@
+C  DEC/CMS REPLACEMENT HISTORY, Element ESI_SE.I
+C  *2    21-JUL-1989 12:01:07 ADEY "(SPR -1) INCLUDE THE SEIS NLIST FILE TYPE CODES"
+C  *1    30-JUN-1989 15:17:15 GILLESPIE ""
+C  DEC/CMS REPLACEMENT HISTORY, Element ESI_SE.I
+C     
+C     $Header: /dba0/esi/finder/include/RCS/esi_se.i,v 1.1 89/05/30 16:33:38 esi Exp $ esi_se.i 
+C     
+******************************************************
+*
+*      COMPAGNIE  GENERALE  DE  GEOPHYSIQUE
+*
+*           I N T E R B A S E   II
+*
+******************************************************
+*
+******************************************************
+*
+*     INCLUDE : ESI_SE.I
+*     USED TO DEFINE SYMBOLS FOR SEISMIC SURFACE MANIPULATIONS
+*
+******************************************************
+*
+        CHARACTER*1 RSECT,XSECT,YSECT,TSECT
+        PARAMETER ( RSECT='R' )
+        PARAMETER ( XSECT='X' )
+        PARAMETER ( YSECT='Y' )
+        PARAMETER ( TSECT='T' )
+*
+*       SECTION TYPE DEFINITION
+*
+        INTEGER X_2D,R_2D
+        PARAMETER ( X_2D=1 )
+        PARAMETER ( R_2D=2 )
+        INTEGER X_3D,Y_3D,T_3D,R_3D
+        PARAMETER ( X_3D=10 )
+        PARAMETER ( Y_3D=11 )
+        PARAMETER ( T_3D=12 )
+        PARAMETER ( R_3D=14 )
+*
+*       DEFINITION OF SURVEY TYPE
+*
+        INTEGER PROJECT_2D,PROJECT_3D
+        PARAMETER ( PROJECT_2D=1 )
+        PARAMETER ( PROJECT_3D=2 )
+        CHARACTER*2 PROJ_2D,PROJ_3D
+        PARAMETER ( PROJ_2D='2D' )
+        PARAMETER ( PROJ_3D='3D' )
+*
+*       DESCRIPTION OF FLAG USE DURING PICKING
+*
+        INTEGER NOPICK_FLAG,NODATA_FLAG,FAULT_FLAG
+        INTEGER PINCH_FLAG
+        PARAMETER ( NOPICK_FLAG=-1 )
+        PARAMETER ( NODATA_FLAG=-2 )
+        PARAMETER ( FAULT_FLAG=-10000 )
+        PARAMETER ( PINCH_FLAG=-20000 )
+        INTEGER NORMAL_PICK,NOPICK,NODATA,FAULT,PINCH
+        PARAMETER ( NORMAL_PICK=0 )
+        PARAMETER ( NOPICK=1 )
+        PARAMETER ( NODATA=2 )
+        PARAMETER ( FAULT=3 )
+        PARAMETER ( PINCH=4 )
+*
+*       DEFINITIONS OF FLAGS
+*
+        INTEGER FLAG_NO_SEISMIC,FLAG_NO_RANGE
+        PARAMETER ( FLAG_NO_SEISMIC = -10000 )
+        PARAMETER ( FLAG_NO_RANGE = -10000 )
+*
+*       DEFINITIONS OF THE N_LIST FORMAT
+*
+        INTEGER SE_FINDER,SE_INTERP
+        PARAMETER ( SE_FINDER=1 )
+        PARAMETER ( SE_INTERP=2 )
+*
+*       DEFINITION OF THE SEISMIC LINE ATTRIBUTE
+*
+        INTEGER SE_AT_NM,SE_AT_MG,SE_AT_SS,SE_AT_PP
+        INTEGER SE_AT_PS,SE_AT_SP
+        PARAMETER ( SE_AT_NM = 1 )
+        PARAMETER ( SE_AT_MG = 2 )
+        PARAMETER ( SE_AT_SS = 3 )
+        PARAMETER ( SE_AT_PP = 4 )
+        PARAMETER ( SE_AT_PS = 5 )
+        PARAMETER ( SE_AT_SP = 6 )
+*
+*       DEFINITION OF THE TYPE OF DATA STORED IN SEIS_SURFACE
+*
+        INTEGER SE_TIME,SE_DEPTH,SE_AMPL,SE_VEL
+        PARAMETER ( SE_TIME = 1 )
+        PARAMETER ( SE_DEPTH = 2 )
+        PARAMETER ( SE_AMPL = 3 )
+        PARAMETER ( SE_VEL = 4 )
+*
+*       DEFINITION OF THE SURFACE TYPE
+*
+        INTEGER SE_HORIZ,SE_FAULT
+        PARAMETER ( SE_HORIZ = 1 )
+        PARAMETER ( SE_FAULT = 2 )
+*
+*       DEFINITION OF THE TYPE OF NLIST FILE TO GENERATE FROM 
+*         SEG_BLD_NLIST_IDS
+*
+        INTEGER SEIS_XY
+        PARAMETER ( SEIS_XY = 9 )
+        INTEGER SEIS_ALTI
+        PARAMETER ( SEIS_ALTI = 10 )
+        INTEGER SEIS_SL
+        PARAMETER ( SEIS_SL = 5 )
+        INTEGER SEIS_OPTIM
+        PARAMETER ( SEIS_OPTIM = 6 )
+        INTEGER SEIS_LATLONG
+        PARAMETER ( SEIS_LATLONG = 8 )
+*
+*       DECLARATION OF FUNCTIONS USED
+*
+        INTEGER SEG_PUT
+        INTEGER SEG_REP
+        INTEGER SEG_GET
+        INTEGER SEG_GETCV
+        INTEGER SEG_DEL
+        INTEGER SEG_INF_LINES
+        INTEGER SEG_INF_SURF
+*
+*******************************************************
+*

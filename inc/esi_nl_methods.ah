@@ -1,0 +1,27 @@
+/* DEC/CMS REPLACEMENT HISTORY, Element ESI_NL_METHODS.AH */
+/* *5    17-MAR-1990 12:58:59 PURNA "(SPR 0) undo last mods" */
+/* *4    16-MAR-1990 11:12:05 PURNA "(SPR 5135) create nlz_strip_points" */
+/* *3    14-FEB-1990 10:37:02 GILLESPIE "(SPR 6005) Make window clip a method" */
+/* *2     9-NOV-1989 13:59:42 GORDON "(SPR 5058) change default resample method, remove draw method" */
+/* *1    12-OCT-1989 09:47:52 GILLESPIE "" */
+/* DEC/CMS REPLACEMENT HISTORY, Element ESI_NL_METHODS.AH */
+#ifndef ESI_NL_METHODS_AH
+#define ESI_NL_METHODS_AH 1
+
+#ifndef ESI_NL_INT_H
+#include "esi_nl_int.h"
+#endif
+
+publicdef NL_METHOD_HEADER nl_default_methods[] = {
+	{0, NL_PRINT_METHOD, "NML_PRINT_NLIST", nlm_print_nlist},
+	{0, NL_RESAMPLE_METHOD, "NLM_SPLINE_NLIST", nlm_spline_nlist},
+	{0, NL_SAVE_METHOD, "NLM_WRITE_NLIST", nlm_write_nlist},
+	{0, NL_SORT_METHOD, "NLM_SORT_NLIST", nlm_sort_nlist},
+	{0, NL_UPDATE_METHOD, "NLM_UPDATE_NLIST", nlm_update_nlist},
+	{0, NL_CLIP_METHOD, "NLM_CLIP_BRK", nlm_window_clip_break},
+	{0, NL_NULL_METHOD, "", (INT_FUNCTION_PTR)0}
+	};
+	
+publicdef NL_METHOD_HEADER *nl_registered_methods = (NL_METHOD_HEADER *)0;
+
+#endif

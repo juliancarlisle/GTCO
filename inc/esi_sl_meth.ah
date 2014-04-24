@@ -1,0 +1,149 @@
+/* DEC/CMS REPLACEMENT HISTORY, Element ESI_SL_METH.AH */
+/* *3    29-OCT-1990 16:23:19 GILLESPIE "(SPR 36) Add NO_MAPPING switch for use by stand-alone applications" */
+/* *2    30-JUL-1990 17:20:27 PURNA "(SPR 0) add lynx,lease select_list" */
+/* *1    30-JUL-1990 17:09:19 PURNA "sl method translation table" */
+/* DEC/CMS REPLACEMENT HISTORY, Element ESI_SL_METH.AH */
+/******************************************************************************
+
+                Copyright Finder Graphics Systems, Inc. 1990
+		   Unpublished -- All rights reserved
+
+THIS SOFTWARE IS THE PROPRIETARY PROPERTY OF Finder Graphics Systems, Inc.  AND
+MAY CONTAIN CONFIDENTIAL TRADE SECRET INFORMATION. IT IS LICENSED FOR USE ON THE
+DESIGNATED EQUIPMENT ON WHICH IT WAS ORIGINALLY INSTALLED AND  MAY NOT BE
+MODIFIED, DUPLICATED OR COPIED IN ANY FORM WITHOUT PRIOR WRITTEN CONSENT OF
+
+			Finder Graphics Systems, Inc.
+			201 Tamal Vista Blvd
+			Corte Madera, CA  USA 94925
+			(415) 927-0100
+
+(The above notice does not constitute an admission of publication or
+unrestricted dissemination of the work)
+
+******************************************************************************/
+
+#ifndef ESI_SL_METH_AH
+#define ESI_SL_METH_AH 1
+
+#ifndef ESI_SL_H
+#include "esi_sl.h"
+#endif 
+
+#ifndef ESI_OR_H
+#include "esi_or.h"
+#endif 
+
+#ifndef ESI_QS_H
+#include "esi_qs.h"
+#endif 
+
+#ifndef NO_MAPPING
+
+#ifndef ESI_GB_H
+#include "esi_gb.h"
+#endif 
+
+#ifndef ESI_GB_MSG_H
+#include "esi_gb_msg.h"
+#endif 
+
+#endif
+
+publicdef const SL_METHOD_HEADER sl_method_defaults[50] = {
+    {WELLS_DATA_TYPE,"OR_LOAD_LISTS",or_load_wells},
+    {SEISMIC_DATA_TYPE,"OR_LOAD_LISTS",or_load_seismic},
+    {LYNX_DATA_TYPE,"OR_LOAD_LISTS",or_load_lynx},
+    {LEASE_DATA_TYPE,"OR_LOAD_LISTS",or_load_lease},
+    {WELLS_DATA_TYPE,"SL_FEED_NLIST",sl_feed_well_nl},
+    {SEISMIC_DATA_TYPE,"SL_FEED_NLIST",sl_feed_seis_nl},
+    {LYNX_DATA_TYPE,"SL_FEED_NLIST",sl_feed_lynx_nl},
+    {LEASE_DATA_TYPE,"SL_FEED_NLIST",sl_feed_lease_nl},
+    {WELLS_DATA_TYPE,"SL_INIT_SELECT_LIST",slz_init_well_sl},
+    {SEISMIC_DATA_TYPE,"SL_INIT_SELECT_LIST",slz_init_seismic_sl},
+    {LYNX_DATA_TYPE,"SL_INIT_SELECT_LIST",slz_init_lynx_sl},
+    {LEASE_DATA_TYPE,"SL_INIT_SELECT_LIST",slz_init_lease_sl},
+#ifndef NO_MAPPING
+    {WELLS_DATA_TYPE,"GB_CREATE_ON_MAP",gb_create_well_on_map_list},
+    {SEISMIC_DATA_TYPE,"GB_CREATE_ON_MAP",gb_create_seis_on_map_list},
+    {WELLS_DATA_TYPE,"GB_POLYGON",gb_well_polygon},
+    {SEISMIC_DATA_TYPE,"GB_POLYGON",gb_seis_polygon},
+#endif
+    {NULL_DATA_TYPE,"",(INT_FUNCTION_PTR)0}
+    };
+
+publicdef SL_DTYPE_HEADER sl_data_type_names[] = {
+    {WELLS_DATA_TYPE,"WELLS"},
+    {SEISMIC_DATA_TYPE,"SEISMIC"},
+    {LYNX_DATA_TYPE,"CULTURE"},
+    {LEASE_DATA_TYPE,"LEASE"},
+    {NULL_DATA_TYPE,""}
+    };
+
+publicdef SL_DTYPE_HEADER sl_table_header_names[] = {
+    {WELLS_DATA_TYPE,"WELL_HDR"},
+    {SEISMIC_DATA_TYPE,"SEIS_LINE_HDR"},
+    {LYNX_DATA_TYPE,"LYNX_CULTURE"},
+    {LEASE_DATA_TYPE,"LEASE"},
+    {NULL_DATA_TYPE,""}
+    };
+
+publicdef SL_DTYPE_HEADER sl_table_headings[] = {
+    {WELLS_DATA_TYPE,"WELL"},
+    {SEISMIC_DATA_TYPE,"SEIS"},
+    {LYNX_DATA_TYPE,"LYNX"},
+    {LEASE_DATA_TYPE,"LEAS"},
+    {NULL_DATA_TYPE,""}
+    };
+
+publicdef SL_DOMAIN_HEADER sl_column_domain[] = {
+    {WELLS_DATA_TYPE,1},
+    {SEISMIC_DATA_TYPE,100},
+    {LYNX_DATA_TYPE,137},
+    {LEASE_DATA_TYPE,86},
+    {NULL_DATA_TYPE,0}
+    };
+
+publicdef SL_DOMAIN_HEADER sl_qs_cur_count[] = {
+    {WELLS_DATA_TYPE,QS_CUR_WELL_COUNT},
+    {SEISMIC_DATA_TYPE,QS_CUR_SEISMIC_COUNT},
+    {LYNX_DATA_TYPE,QS_CUR_LYNX_COUNT},
+    {LEASE_DATA_TYPE,QS_CUR_LEASE_COUNT},
+    {NULL_DATA_TYPE,0}
+    };
+
+publicdef SL_DOMAIN_HEADER sl_qs_cur_list[] = {
+    {WELLS_DATA_TYPE,QS_CUR_WELL_LIST},
+    {SEISMIC_DATA_TYPE,QS_CUR_SEISMIC_LIST},
+    {LYNX_DATA_TYPE,QS_CUR_LYNX_LIST},
+    {LEASE_DATA_TYPE,QS_CUR_LEASE_LIST},
+    {NULL_DATA_TYPE,0}
+    };
+
+publicdef SL_DOMAIN_HEADER sl_qs_cur[] = {
+    {WELLS_DATA_TYPE,QS_CUR_WELL},
+    {SEISMIC_DATA_TYPE,QS_CUR_SEISMIC},
+    {LYNX_DATA_TYPE,QS_CUR_LYNX},
+    {LEASE_DATA_TYPE,QS_CUR_LEASE},
+    {NULL_DATA_TYPE,0}
+    };
+
+publicdef SL_DOMAIN_HEADER sl_qs_list_exists[] = {
+    {WELLS_DATA_TYPE,QS_WELL_LIST_EXISTS},
+    {SEISMIC_DATA_TYPE,QS_SEISMIC_LIST_EXISTS},
+    {LYNX_DATA_TYPE,QS_LYNX_LIST_EXISTS},
+    {LEASE_DATA_TYPE,QS_LEASE_LIST_EXISTS},
+    {NULL_DATA_TYPE,0}
+    };
+
+#ifndef NO_MAPPING
+
+publicdef SL_DOMAIN_HEADER sl_gb_no_on_map[] = {
+    {WELLS_DATA_TYPE,GB_NO_WELLS_ON_MAP},
+    {SEISMIC_DATA_TYPE,GB_NO_SEISMIC_ON_MAP},
+    {NULL_DATA_TYPE,0}
+    };
+
+#endif
+
+#endif
